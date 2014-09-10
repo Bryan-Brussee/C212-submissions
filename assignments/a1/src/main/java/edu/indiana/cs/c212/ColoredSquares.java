@@ -49,6 +49,7 @@ public class ColoredSquares extends JPanel {
 
         Graphics2D tablet2D = (Graphics2D) g;
         // call drawBlock method to draw squares of required size on JPanel
+        drawBlock(tablet2D, 0, 0);
 
 		/* Add just two missing lines (two `for-loops', one inside the other) to this paint() method. (Number the
 		 * rows and columns counting from zero.) And to do that, all you really need to know is that you can access 
@@ -56,18 +57,43 @@ public class ColoredSquares extends JPanel {
 		*/
 
         //	drawBlock(tablet2D, row, column);
+        for (int row = 0; row < 10; row++) {
+        	for (int col = 0; col < 10; col++) {        		
+        		drawBlock(tablet2D, row, col);
+        	}
+        	
+        }
+        
     }
 
     private void drawBlock(Graphics2D tablet, int row, int column) {
         int xOrigin, yOrigin, width, height;
         Rectangle rectangle;
+        //tablet.setColor(Color.cyan);
+        //tablet.fillRect(0, 0, 30, 30);
+        
+        xOrigin = column * 30;
+        yOrigin = row * 30;
+        width = 30;
+        height = 30;
+        
+        rectangle = new Rectangle(xOrigin + 3, yOrigin + 3, width - 3, height - 3);
+        tablet.setColor(Color.black);
+        tablet.fill(rectangle);
+        
+       rectangle = new Rectangle(xOrigin + 4, yOrigin + 4, width - 5, height - 5);
+       tablet.setColor(makeRandomColor());
+       //tablet.fillRect(4, 4, row, column);
+       tablet.fill(rectangle);
     }
 
     private Color makeRandomColor() {
         // This method will create random color and return it to drawBlock() method.
         // Use makeRandomColorValue() method to generate random color value
         // return new Color(<redColorValue>, <greenColorValue>, <blueColorValue>);
-        return null;
+    	//return new Color(0,0,0);
+        Color randomcolor = new Color(randomColorValue(), randomColorValue(),randomColorValue());
+        return randomcolor;
     }
 
     // this method generates random integer number between 0 (inclusive) and the specified value (exclusive)
