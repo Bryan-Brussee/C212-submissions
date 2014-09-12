@@ -24,6 +24,14 @@ public class Lab3 {
 	public static ArrayList<Integer> generateArrayList(int n) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		
+		int count = 1;
+		
+		while (count <= n) {
+			list.add(count);
+			count++;
+		}
+	
+		
 		//FIXME
 		
 		return list;
@@ -46,8 +54,12 @@ public class Lab3 {
 	 * http://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html 
 	 */
 	public static int[] generateArray(int n) {
-		int[] arr = new int[0];
-
+		int[] arr = new int[n];
+		
+		for (int i = 1; i <= n; i++) {
+			arr[i-1] = i;
+		}
+		
 		//FIXME
 
 		return arr;
@@ -108,10 +120,14 @@ public class Lab3 {
 	 */
 	public static Boolean isMemberOfArrayList(ArrayList<Integer> list, int i) {
 		Iterator<Integer> itr = list.iterator();
-	
-		//FIXME
 		
-		return null;
+		while ( itr.hasNext( ) ) {
+			if (i == itr.next() ) {
+				
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -125,9 +141,17 @@ public class Lab3 {
 	 */
 	public static Boolean isMemberOfArray(int[] arr, int i) {
 		
-		//FIXME
+		
+		for (int index = 0; index<arr.length; index++) {
+			if (i == arr[index]) {
+				return true;
+			}
+		}
+		
+			
+			//FIXME
 
-		return null;
+		return false;
 	}
 
 	/**
@@ -150,8 +174,14 @@ public class Lab3 {
 	 *        3. grid.length returns the length of the rows of grid.
 	 */
 	public static int[][] makeMultTable(int n) {
-		int[][] table = new int[0][0];
+		int[][] table = new int[n][n];
 		
+		for (int row = 0; row < n; row++) {
+			for (int col = 0; col < n; col++) {
+			
+				table[col][row] = (row + 1) * (col + 1);
+			}
+		}
 		//FIXME
 
 		return table;
@@ -168,15 +198,17 @@ public class Lab3 {
 	 * if the number is anywhere in that row of the grid, and false otherwise.
 	 */
 	public static Boolean isMemberOfGridRow(int[][] grid, int rowNumber, int number) {
+		
+		
 
 		//FIXME
 
-		return null;
+		return isMemberOfArray(grid[rowNumber], number);
 	}
 	
 	public static void main(String[] args){
 		// place code like the following here to do your own tests:
-		// printArrayList(generateArrayList(5));
-		// printArray(generateArray(5));
+		printArrayList(generateArrayList(5));
+		printArray(generateArray(5));
 	}
 }
