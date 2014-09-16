@@ -1,5 +1,5 @@
 /**
- * @author <PUT YOUR USERNAME HERE>
+ * @author <bbrussee>
  */
 package edu.indiana.cs.c212;
 
@@ -45,17 +45,30 @@ public class Grid extends AbstractGrid {
 	public Tile[] getRow(int rowNumber) {
 		//FIXME
 	   // gridArray[rowNumber][col];
-
-        return null; //Replace this with the correct return value
+    	
+    	Tile[] rowArray;
+    	rowArray = new Tile[getRows()];
+    	
+    	for (int col = 0; col < getCols(); col++) {
+    		rowArray[col] = gridArray[rowNumber][col];
+      			                             
+    	}
+        return rowArray; //Replace this with the correct return value
 	}
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc
 	 */
     @Override
 	public Tile[] getColumn(int colNumber) {
 	    //gridArray[row][colNumber];
-
-        return null; 		//FIXME
+    	Tile[] colArray;
+    	colArray = new Tile[getCols()];
+    	
+    	for (int row = 0; row < getRows(); row++) {
+    		colArray[row] = gridArray[row][colNumber];
+    		
+    	}
+        return colArray; 		//FIXME
     }
 
 	/**
@@ -65,6 +78,11 @@ public class Grid extends AbstractGrid {
 	public Iterator<Tile> getTiles() {
 		
 	   List<Tile> tiles = new ArrayList<Tile>();
+	   for (int x= 0; x < gridArray.length; x++) {
+		   for (int y = 0; y < gridArray.length; y++) {
+			   tiles.add(gridArray[x][y]);
+		   }
+	   }
 	  //FIXME Please populate the ArrayList!
 	  //Use the tiles ArrayList to store the intermediate data.
 	  //You will be returning an iterator over the ArrayList.
@@ -77,7 +95,7 @@ public class Grid extends AbstractGrid {
 	 */
     @Override
 	public Tile getTile(int row, int col) {
-        return null; 		//FIXME Replace with actual return value
+        return gridArray[row][col]; 		//FIXME Replace with actual return value
 
     }
 	/**
