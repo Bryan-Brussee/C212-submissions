@@ -22,9 +22,8 @@ class Circle{
      * REMINDER: Don't forget to reference fields with the keyword this.
      */
     public Circle(){
-    	//FIXME
-    	//Set a numerical value to radius
-    	//Set coordinates to origin
+    	this.radius = 1;
+    	this.origin = new Point(0, 0);
     }
     
     /**
@@ -38,9 +37,8 @@ class Circle{
      * @param p
      */
     public Circle(double r, Point p){
-    	//FIXME
-    	//Set radius to r
-    	//Set origin to p
+    	this.radius = r;
+    	this.origin = p;
     }
     
     /**
@@ -50,8 +48,8 @@ class Circle{
      */
     public double getRadius(){
     	//FIXME
+    	return this.radius;
     	//return the radius of the circle
-    	return -1;
     }
     
     /**
@@ -62,7 +60,7 @@ class Circle{
     public Point getOrigin(){
     	//FIXME
     	//return the center of the circle
-    	return null;
+    	return this.origin;
     }
     
     /**
@@ -74,7 +72,7 @@ class Circle{
     public double getCircumference(){
     	//FIXME
     	//return the circumference of the Circle
-    	return -1;
+    	return 2 * PI * getRadius();
     }
 
     /**
@@ -86,7 +84,7 @@ class Circle{
     public double getArea(){
     	//FIXME
     	//return the Area of the Circle
-    	return -1;
+    	return PI * (getRadius() * getRadius());
     }
     
     /**
@@ -104,6 +102,7 @@ class Circle{
     
     public static Double distanceBetweenCircles(Circle a, Circle b){
     	//FIXME
-    	return null;
+    	double originDistance = Point.distanceBetween(a.getOrigin(), b.getOrigin()); 
+    	return originDistance - a.getRadius() - b.getRadius();
     }
 }

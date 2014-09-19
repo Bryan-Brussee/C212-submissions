@@ -16,7 +16,8 @@ public class Point {
 	 * @param y
 	 */
 	public Point(double x, double y){
-		//FIXME
+		this.x = x;
+		this.y = y;
 	}
 	
 	/**
@@ -25,8 +26,7 @@ public class Point {
 	 * @returns the class x variable
 	 */
 	public Double getX(){
-		//FIXME
-		return null;
+		return this.x;
 	}
 	
 	/**
@@ -35,8 +35,7 @@ public class Point {
 	 * @returns the class y variable
 	 */
 	public Double getY(){
-		//FIXME
-		return null;
+		return this.y;
 	}
 	
 	/**
@@ -49,8 +48,10 @@ public class Point {
 	 * @return
 	 */
 	public Double distanceTo(Point other){
-		//FIXME
-		return null;
+		//double xDifference = Math.pow( (this.x - other.getX()), 2);
+		//double yDifference = Math.pow( (this.y - other.getY()), 2);
+		//double answer  = Math.sqrt(xDifference + yDifference);
+		return distanceBetween(this , other);
 	}
 	
 	/**
@@ -67,6 +68,9 @@ public class Point {
 	 */
 	public static Double distanceBetween(Point p1, Point p2){
 		//FIXME
-		return null;
+		double xDifference = Math.pow( (p2.getX() - p1.getX()), 2);
+		double yDifference = Math.pow( (p2.getY() - p1.getY()), 2);
+		double answer = Math.sqrt(xDifference + yDifference);
+		return answer;
 	}
 }
