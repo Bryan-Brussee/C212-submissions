@@ -22,8 +22,15 @@ public class CalculatorModel {
      * remainder of a divided by b. For example 11 % 4 = 3
      */
     public String getMemory() {
-        //FIXME
-        return "I'm broken, please fix me";
+    	
+        if (memory == Math.floor(memory)) {
+    		int n = (int) memory;
+    		return Integer.toString(n);
+    	} else if (Double.isInfinite(memory)) {
+    		return "Infinity";
+    	} else {
+        return Double.toString(memory);
+    	}
     }
 
     public void setMemory(String string) {

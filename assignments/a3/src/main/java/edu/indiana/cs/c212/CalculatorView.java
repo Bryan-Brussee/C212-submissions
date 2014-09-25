@@ -78,7 +78,7 @@ public class CalculatorView extends JPanel {
     }
 
     private JPanel setupOperatorPanel() {
-        String[] operators = {"/", "x", "-", "+"};
+        String[] operators = {"/", "*", "-", "+"};
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(operators.length, 1));
         for (int i = 0; i < operators.length; i++) {

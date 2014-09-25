@@ -38,6 +38,10 @@ import javax.swing.JFrame;
 // this class is for education only. don't serialize.
 public class Calculator extends JFrame {
 	public static void main(String[] args) {
+		
+		double x = 5;
+		System.out.println(x/0);
+		
 		Calculator calc = new Calculator();
 		CalculatorModel model = new CalculatorModel();
 		CalculatorController controller = new CalculatorController(model);

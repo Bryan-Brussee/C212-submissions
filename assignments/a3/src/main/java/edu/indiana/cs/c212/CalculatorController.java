@@ -108,7 +108,21 @@ public class CalculatorController {
      * @param operand
      */
     public void updateModel(String operand) {
-        //FIXME
+    	if (previousOperator.equals("=") ) {
+    		model.setMemory(operand);
+    	}
+    	else if (previousOperator.equals("+")) {
+    		model.addToMemory(operand);
+    	}
+    	else if (previousOperator.equals("-")) {
+    		model.subtractFromMemory(operand);
+    	}
+    	else if (previousOperator.equals("/")) {
+    		model.divideMemoryBy(operand);
+    	}
+    	else if (previousOperator.equals("*")) {
+    		model.multiplyMemoryBy(operand);
+    	}
     }
 
     private void reset() {

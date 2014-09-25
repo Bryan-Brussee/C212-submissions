@@ -21,7 +21,7 @@ public class Course {
      */
     public Course() {
         students = new ArrayList<Student>(); //Leave this be.
-        //FIXME Set the value of id to be a random UUID
+        id = UUID.randomUUID();
     }
     
     /**
@@ -31,7 +31,9 @@ public class Course {
      * @param courseName
      */
     public Course(String courseName){
-    	students = new ArrayList<Student>(); //Leave this be.
+    	students = new ArrayList<Student>();
+    	this.id = UUID.randomUUID();
+    	this.courseName = courseName;//Leave this be.
     	//FIXME Set the value of id to be a random UUID and the course name to the given name
     }
     
@@ -43,6 +45,9 @@ public class Course {
      * @param students
      */
     public Course(String courseName, List<Student> students){
+    	this.id = UUID.randomUUID();
+    	this.courseName = courseName;
+    	this.students = students;
     	//FIXME Set the id to a random UUID, the course name to the given name, and the course's students to the given students
     }
 
@@ -53,7 +58,7 @@ public class Course {
      */
     public UUID getId() {
         //FIXME Return the id value.
-    	return null;
+    	return this.id;
     }
 
     /**
@@ -73,7 +78,7 @@ public class Course {
      */
     public String getCourseName() {
         //FIXME Return the courseName value.
-    	return null;
+    	return this.courseName;
     }
 
     /**
@@ -82,6 +87,7 @@ public class Course {
      * @param courseName
      */
     public void setCourseName(String courseName) {
+    	this.courseName = courseName;
         //FIXME set the courseName value
     }
 
@@ -91,8 +97,9 @@ public class Course {
      * @return
      */
     public List<Student> getStudents() {
+    	
     	//FIXME return the actually set of enrolled students.
-    	return null;
+    	return this.students;
     }
 
     /**
@@ -102,6 +109,7 @@ public class Course {
      */
     public void setStudents(List<Student> students) {
         //FIXME Set the students value
+    	this.students = students;
 
     }
 
@@ -117,7 +125,11 @@ public class Course {
      */
     public Boolean enrollStudent(Student student) {
     	//FIXME return the correct Boolean value
-    	return null;
+    	if (students.size() >= COURSE_ENROLLMENT_LIMIT || students.contains(student)) {
+    		return false;
+    	} else {
+    		return students.add(student) && true;
+    	}
     }
     
     /**
@@ -127,8 +139,11 @@ public class Course {
      * @return true if and only if the given student is enrolled in the course
      */
     public Boolean isEnrolled(Student student){ 
-        //FIXME return the correct Boolean value
-    	return null;
+    	if (students.contains(student)) {
+            return true;
+    }        else        {
+            return false;
+    }
     }
 
     /**
@@ -138,7 +153,9 @@ public class Course {
      * @param student The student to be removed.
      */
     public void removeStudent(Student student) {
-        //FIXME remove the given student from the course
+        if (students.contains (student))        {
+            students.remove(student);
+    }
     }
     
 

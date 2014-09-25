@@ -8,6 +8,8 @@ import java.util.UUID;
  * http://docs.oracle.com/javase/7/docs/api/java/util/UUID.html
  */
 public class Student{
+	private String name;
+	private UUID id;
 	//FIXME add instance variables here
 
 	
@@ -16,6 +18,7 @@ public class Student{
      * you don't need to change that.
      */
     public Student(){
+    	this.id = UUID.randomUUID();
     	//FIXME
 
     }
@@ -25,6 +28,8 @@ public class Student{
      * @param name the name of the student.
      */
     public Student(String name){
+    	this.name = name;
+    	this.id = UUID.randomUUID();
     	//FIXME
 
     }
@@ -35,8 +40,8 @@ public class Student{
      * @return The name of the student
      */
     public String getName(){
-        //FIXME
-        return null;
+        
+        return this.name;
     }
 
     /**
@@ -44,7 +49,7 @@ public class Student{
      * @param name The new name for the student.
      */
     public void setName(String name){
-        //FIXME
+        this.name = name;
     }
     
     /**
@@ -52,8 +57,7 @@ public class Student{
      * @return the student's ID
      */
     public UUID getId(){
-    	//FIXME
-        return  null;
+        return this.id;
     }
 
     /**
@@ -61,7 +65,7 @@ public class Student{
      * @param id the new id value
      */
     public void setId(UUID id){
-        //FIXME Change the student's ID to id
+        this.id = id;
     }
 
 
@@ -72,7 +76,7 @@ public class Student{
      *
      * Note: you do not need to write or modify any part of this method.
      *
-     * @param other
+     * @param others
      * @return
      */
     @Override
