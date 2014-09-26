@@ -1,7 +1,6 @@
 package edu.indiana.cs.c212;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Lab5 
@@ -13,7 +12,7 @@ public class Lab5
      */
 	public Lab5()
 	{
-		//FIXME
+		this.empList = new ArrayList<Employee>();
 	}
 
 	/**
@@ -31,7 +30,7 @@ public class Lab5
 	 */
 	public void addEmployee(Employee emp)
 	{
-		//FIXME
+		this.empList.add(emp);
 	}
 
 	/**
@@ -46,7 +45,12 @@ public class Lab5
 	 */
 	public Employee findEmployee(String empName)
 	{
-		//FIXME
+		for (int i = 0; i < empList.size(); i++) {
+			Employee current = empList.get(i);
+			if (current.getEmpName().equals(empName)) {
+				return current;
+			}
+		}
 		return null;
 	}
 
@@ -60,9 +64,13 @@ public class Lab5
 	 */
 	public void removeEmployee(String empName)
 	{
-		//FIXME
+		for (int i = 0; i < empList.size(); i++) {
+			Employee current = empList.get(i);
+			if (current.getEmpName().equals(empName)) {
+			empList.remove(i);
+			}
+		}
 	}
-
 	/**
 	 * @return Employee
 	 * 
@@ -71,21 +79,30 @@ public class Lab5
 	 */
 	public Employee getMaxSalaryEmp()
 	{
-		//FIXME
-		return null;
+		Employee bestpaid = empList.get(0);
+		for (int i = 0; i < empList.size(); i++) {
+			Employee current = empList.get(i);
+			if (current.getSalary() > bestpaid.getSalary()) {
+				bestpaid = current;
+			}
+			
+		}
+		return bestpaid;
 	}
 
 	/**
 	 * @param double percentage
 	 * @return Employee
 	 * 
-	 * raiseSalary is a method that raises an employee's salary 
+	 * raiseSalary is a method that raises all employees' salaries
 	 * by given percentage
 	 */
 	public void raiseSalary(double percentage)
 	{
-		//FIXME
-	}
+		for (Employee current: empList) {
+			current.setSalary(current.getSalary() * (1.0 + (percentage / 100.0)));
+			}
+		}
 
 	/**
 	 * @param Employee emp
@@ -94,7 +111,9 @@ public class Lab5
 	 */
 	public void displayEmployee(Employee emp)
 	{
-		//FIXME
+		System.out.println("Employee Name: " + emp.getEmpName());
+		System.out.println("Employee Salary: " + emp.getSalary());
+		System.out.println("Employee Join Year: " + emp.getJoinYear());
 	}
 
 	public static void main(String[] args)
@@ -102,11 +121,18 @@ public class Lab5
 		//FIXME
 
 		// Add employees to the list
+		Lab5 lab5 = new Lab5();
 
 		// Find employee
-
+		lab5.addEmployee(new Employee("Bryan", 3, 2002));
+		lab5.addEmployee(new Employee("Jim", 3, 2002));
+		lab5.addEmployee(new Employee("Scotty", 3, 2002));
+		lab5.addEmployee(new Employee("Vader", 3, 2002));
+		lab5.addEmployee(new Employee("Moss", 3, 2002));
+		
 		// display employee details
-
+		
+		
 		// display maximum salary employee details
 
 		// increase salary of all employees by 10 percent

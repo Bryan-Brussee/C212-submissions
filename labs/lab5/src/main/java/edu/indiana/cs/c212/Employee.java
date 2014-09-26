@@ -7,15 +7,18 @@ package edu.indiana.cs.c212;
 
 public class Employee 
 {
-	
-	// FIXME add instance variables here
+	private String name;
+	private double salary;
+	private int year;
 	
     /**
      * This constructor should create an Employee with a name, salary, and the year they joined the company. 
      */
 	public Employee(String empName, double salary, int joinYear)
 	{
-		// FIXME 
+		this.name = empName;
+		this.salary = salary;
+		this.year = joinYear;
 	}
 
     /**
@@ -23,9 +26,8 @@ public class Employee
      * @return The name of the employee
      */
 	public String getEmpName() 
-	{
-		//FIXME 
-		return null;
+	{ 
+		return this.name;
 	}
 
 	/**
@@ -34,7 +36,7 @@ public class Employee
      */
 	public void setEmpName(String empName) 
 	{
-		//FIXME
+		this.name = empName;
 	}
 
 	/**
@@ -43,8 +45,7 @@ public class Employee
      */
 	public Double getSalary() 
 	{
-		//FIXME
-		return null;
+		return this.salary;
 	}
 
 	/**
@@ -53,7 +54,7 @@ public class Employee
      */
 	public void setSalary(double salary) 
 	{
-		//FIXME
+		this.salary = salary;
 	}
 
    /**
@@ -62,8 +63,7 @@ public class Employee
      */
 	public Integer getJoinYear() 
 	{
-		//FIXME
-		return null;
+		return this.year;
 	}
 
 	/**
@@ -72,6 +72,6 @@ public class Employee
      */
 	public void setJoinYear(int joinYear) 
 	{
-		//FIXME
+		this.year = joinYear;
 	}
 }
