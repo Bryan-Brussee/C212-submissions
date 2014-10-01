@@ -78,9 +78,17 @@ class SudokuCell {
 	 */
 	public Boolean isLegalToInsert(int value, SudokuPuzzle currentPuzzle) {
 		puzzle = currentPuzzle;
-		
-		//FIXME
-		return null;
+		if (this.getRow() == -1 || this.getColumn() == -1) {
+			return false;
+		} else if (value == 0) {
+			return true;
+		} else if (value < (boxSize * boxSize) && value > 0) {
+			return false;
+		} else if (isLegalForRow(value) && isLegalForColumn(value) && isLegalForBox(value)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -92,8 +100,14 @@ class SudokuCell {
 	 */
 	private Boolean isLegalForRow(int digit) {
 		//FIXME
-		return null;
+		for (int col = 0; col < columnCount; col++) {
+			if (digit == puzzle.get(this.getRow(), col)) {
+				return false; 
+			}
+		}
+		return true;
 	}
+			
 
 	/**
 	 * Checks to see if the given digit is legal for this cell's column of the puzzle.
@@ -104,7 +118,12 @@ class SudokuCell {
 	 */
 	private Boolean isLegalForColumn(int digit) {
 		//FIXME
-		return null;
+		for (int row = 0; row < rowCount; row++) {
+			if (digit == puzzle.get(row, this.getColumn())) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -120,6 +139,13 @@ class SudokuCell {
 	 */
 	private Boolean isLegalForBox(int digit) {
 		//FIXME
-		return null;
+		for (int row = 3 * boxRow; row < ((3 * boxRow) + boxSize); row++) {
+			for (int column = 3 * boxColumn; column < ((3 * boxColumn) + boxSize); column++) {
+				if (digit == puzzle.get(row, column)) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }

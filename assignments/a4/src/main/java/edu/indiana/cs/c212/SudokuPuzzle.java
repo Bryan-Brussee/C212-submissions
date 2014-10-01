@@ -88,8 +88,11 @@ class SudokuPuzzle {
 	 *         and false otherwise
 	 */
 	public Boolean isEmpty(int row, int column) {
-		// FIXME
-		return null;
+		if (isEmptyValue(grid[row][column])) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -99,9 +102,16 @@ class SudokuPuzzle {
 	 * @return true if the puzzle has an empty cell and false otherwise
 	 */
 	public Boolean hasEmptyCell() {
-		//FIXME
-		return null;
+		for (int row = 0; row < rowCount; row++) {
+			for (int column = 0; column < columnCount; column++) {
+				if (isEmpty(row, column)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
+
 
 	/**
 	 * getEmptyCell checks to see if there is a an empty value in the
@@ -111,9 +121,21 @@ class SudokuPuzzle {
 	 * @return a SudokuCell if there is an empty spot in the puzzle, and null otherwise
 	 */
 	public SudokuCell getEmptyCell() {
-		//FIXME
-		return null;
+		if (hasEmptyCell()) {
+			for (int row = 0; row < puzzleSize; row++) {
+				for (int column = 0; column < puzzleSize; column++) {
+					if (isEmpty(row, column)) {
+						SudokuCell emptyAnswer =  new SudokuCell(this, row, column);
+						return emptyAnswer;
+					}
+					}
+			}
+				return null;
+			} else {
+				return null;
+			}
 	}
+				
 	
 	public int[][] getPuzzle(){
 		return grid;
