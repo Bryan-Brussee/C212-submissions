@@ -121,21 +121,15 @@ class SudokuPuzzle {
 	 * @return a SudokuCell if there is an empty spot in the puzzle, and null otherwise
 	 */
 	public SudokuCell getEmptyCell() {
-		if (hasEmptyCell()) {
-			for (int row = 0; row < puzzleSize; row++) {
-				for (int column = 0; column < puzzleSize; column++) {
+			for (int row = 0; row < rowCount; row++) {
+				for (int column = 0; column < columnCount; column++) {
 					if (isEmpty(row, column)) {
-						SudokuCell emptyAnswer =  new SudokuCell(this, row, column);
-						return emptyAnswer;
+						SudokuCell emptyCell =  new SudokuCell(this, row, column);
+						return emptyCell;
 					}
-					}
-			}
-				return null;
-			} else {
-				return null;
-			}
-	}
-				
+				}
+			} return null;
+		}		
 	
 	public int[][] getPuzzle(){
 		return grid;

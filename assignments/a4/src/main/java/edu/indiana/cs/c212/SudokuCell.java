@@ -33,8 +33,8 @@ class SudokuCell {
 			this.columnCount = boxSize * boxSize;
 			this.row = row;
 			this.column = column;
-			this.boxRow = (row / boxSize) * boxSize;
-			this.boxColumn = (column / boxSize) * boxSize;
+			this.boxRow = (row / boxSize);
+			this.boxColumn = (column / boxSize);
 		}
 		//if the row and column fall outside of the puzzle's size, then use -1 as the value
 		//so we can check against -1 explicitly in isLegalToInsert
@@ -82,14 +82,17 @@ class SudokuCell {
 			return false;
 		} else if (value == 0) {
 			return true;
-		} else if (value < (boxSize * boxSize) && value > 0) {
-			return false;
-		} else if (isLegalForRow(value) && isLegalForColumn(value) && isLegalForBox(value)) {
+		} else if (value > 0 &&
+					value <= (puzzle.getPuzzleSize()) && 
+					isLegalForRow(value) && 
+					isLegalForColumn(value) && 
+					isLegalForBox(value)) {
 			return true;
-		} else {
-			return false;
+			} else {
+				return false;
+			}
 		}
-	}
+
 
 	/**
 	 * Checks to see if the given digit is legal for this cell's row of the puzzle.
@@ -139,8 +142,10 @@ class SudokuCell {
 	 */
 	private Boolean isLegalForBox(int digit) {
 		//FIXME
-		for (int row = 3 * boxRow; row < ((3 * boxRow) + boxSize); row++) {
-			for (int column = 3 * boxColumn; column < ((3 * boxColumn) + boxSize); column++) {
+		int start1 = 3 * boxRow;
+		int start2 = 3 * boxColumn;
+		for (int row = start1; row < start1 + boxSize; row++) {
+			for (int column = start2; column < start2 + boxSize; column++) {
 				if (digit == puzzle.get(row, column)) {
 					return false;
 				}

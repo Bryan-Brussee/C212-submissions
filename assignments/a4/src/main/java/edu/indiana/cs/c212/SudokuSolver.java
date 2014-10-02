@@ -34,46 +34,31 @@ class SudokuSolver {
 	 */
 	public static Boolean canSolve(SudokuPuzzle puzzle) {
 		//FIXME
-	      {
-	          if (!puzzle.hasEmptyCell())
-	              {
-	              //if we're here, the puzzle is solved
-	              return true;
-	              }
+		if (!puzzle.hasEmptyCell())
+        {
+        return true;
+        }
 
-	          //if we're here, the puzzle has at least one empty cell
-	          SudokuCell cell = puzzle.getEmptyCell();
-	          for (int digit = 1; digit <= puzzle.getPuzzleSize(); digit++)
-	              {
-	              if (cell.isLegalToInsert(digit, puzzle))
-	                  {
-	                  //try digit in the cell
-	                  cell.insert(digit);
+    SudokuCell cell = puzzle.getEmptyCell();
+    for (int digit = 1; digit <= puzzle.getPuzzleSize(); digit++)
+        {
+        if (cell.isLegalToInsert(digit, puzzle))
+            {
+            cell.insert(digit);
+            if (canSolve(puzzle))
+                {
+                return true;
+                }
+            else
+                {
+                cell.insert(puzzle.getEmptyValue());
+                }
+            }
+        }
+    return false;
+    }
 
-	                  //with that choice, can we solve the rest of the puzzle?
-	                  if (canSolve(puzzle))
-	                      {
-	                      //yes, we can solve the rest of the puzzle
-	                      return true;
-	                      }
-	                  else
-	                      {
-	                      //no, the choice didn't work somewhere down the
-	                      //line,
-	                      //so unmake it
-	                      cell.insert(puzzle.getEmptyValue());
-	                      }
-	                  }
-	              //else, the digit wasn't legal for this empty cell,
-	              //so, go try to find another digit to try
-	              }
-
-	          //if we're here, we've tried all digits in the empty cell
-	          //but nothing worked, so either the puzzle is unsolvable,
-	          //or some earlier choice was wrong, so backtrack up the tree
-	          return false;
-	          }
-	}
+			
 
 
 	public static void main(String[] parameters) {
