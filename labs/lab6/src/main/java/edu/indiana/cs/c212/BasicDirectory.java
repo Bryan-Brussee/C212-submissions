@@ -1,6 +1,7 @@
 package edu.indiana.cs.c212;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,22 +24,46 @@ public class BasicDirectory implements Directory {
      */
     @Override
     public List<Person> getPeople() {
-        return null; //FIXME
+       Collections.sort(persons);
+    	return persons;
     }
     /**
      * {@inheritDoc}
      */
     @Override
     public List<Student> getStudents() {
-        return null; //FIXME
+    	ArrayList<Student> students = new ArrayList<Student>();
+    	
+    	
+    	for (Person p: persons) {
+    		if (p.getClass() == Student.class) {
+    			students.add((Student)p);
+    		}
+    	}
+    	Collections.sort(students);
+    	return students;
     }
+    	
+ 
+    	
+    
     /**
      * {@inheritDoc}
      */
     @Override
     public List<Professor> getProfessors() {
-        return null; //FIXME
+    	ArrayList<Professor> professors = new ArrayList<Professor>();
+    	
+    	
+    	for (Person p: persons) {
+    		if (p.getClass() == Professor.class) {
+    			professors.add((Professor)p);
+    		}
+    	}
+    	Collections.sort(professors);
+    	return professors;
     }
+        
     /**
      * {@inheritDoc}
      */
@@ -58,13 +83,13 @@ public class BasicDirectory implements Directory {
      */
     @Override
     public void addStudent(Student student) {
-        //FIXME
+        persons.add(student);
     }
     /**
      * {@inheritDoc}
      */
     @Override
     public void addProfessor(Professor professor) {
-        //FIXME
+        persons.add(professor);
     }
 }

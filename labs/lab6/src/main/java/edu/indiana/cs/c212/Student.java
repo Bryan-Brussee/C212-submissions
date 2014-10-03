@@ -19,8 +19,7 @@ public class Student extends Person {
      * @param lastName  The Person's last name
      */
     public Student(String firstName, String lastName) {
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
+    	super(firstName, lastName);
     }
 
     /**
@@ -34,16 +33,16 @@ public class Student extends Person {
      * @param name The name of the Student
      */
     public Student(String name) {
-        //FIXME
+        super(name);
     }
 
 
     public DateTime getGraduationDate() {
-        return null; //FIXME
+        return this.graduationDate;
     }
 
     public void setGraduationDate(DateTime graduationDate) {
-        //FIXME
+        this.graduationDate = graduationDate;
     }
 
 }

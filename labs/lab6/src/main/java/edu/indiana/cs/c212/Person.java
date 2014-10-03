@@ -2,8 +2,6 @@ package edu.indiana.cs.c212;
 
 
 public abstract class Person implements Comparable<Person> {
-	
-	//FIXME
 	/**
 	 *
 	 * A person is a class that has a String firstName, and a String lastName
@@ -35,7 +33,7 @@ public abstract class Person implements Comparable<Person> {
      * @param name The name of the Person
      */
     public Person(String name){
-      //FIXME
+    	this.setName(name);
     }
 
 
@@ -70,7 +68,11 @@ public abstract class Person implements Comparable<Person> {
      *             There might be arbitrary whitespace inbetween the names.
      */
     public void setName(String name){
-        //FIXME
+    	int spaceLocation = name.indexOf(" ");
+    	String firstName = name.substring(0, spaceLocation);
+    	String lastName = name.substring(spaceLocation + 1, name.length());
+    	this.setFirstName(firstName);
+    	this.setLastName(lastName);
     }
 
 
@@ -84,6 +86,13 @@ public abstract class Person implements Comparable<Person> {
      */
     @Override
     public int compareTo(Person other) {
-        return 0; //FIXME
+    	if (this.getLastName().compareTo(other.getLastName() ) < 0 ) {
+    		return -1;
+    	} else if ( this.getLastName().compareTo(other.getLastName() ) > 0 ) {
+    		return 1;
+    	} else {
+    		return 0;
+    	}
     }
 }
+    

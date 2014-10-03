@@ -18,8 +18,7 @@ public class Professor extends Person {
      * @param lastName  The Person's last name
      */
     public Professor(String firstName, String lastName) {
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
+    	super(firstName, lastName);
     }
 
     /**
@@ -31,15 +30,15 @@ public class Professor extends Person {
      * @param name The name of the Professor
      */
      public Professor(String name){
-         //FIXME
+         super(name);
      }
 
     public DateTime getStartDate() {
-        return null; //FIXME
+        return this.startDate;
     }
 
     public void setStartDate(DateTime startDate) {
-        //FIXME
+        this.startDate = startDate;
     }
 
 }
