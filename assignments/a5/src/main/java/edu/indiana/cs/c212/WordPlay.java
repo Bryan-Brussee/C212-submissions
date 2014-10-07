@@ -66,10 +66,17 @@ public class WordPlay extends JFrame {
 
         inputString = inputString.replaceAll(
                 everythingButLettersPatternMatcher, ",");
+        StringTokenizer st = new StringTokenizer(inputString, ",'");
+        while (st.hasMoreTokens()) {
+        	Magnet newMagnet = new Magnet(st.nextToken());
+        	fridge.addMagnet(newMagnet);
+        }
+        
+        
         
         //FIXME
         //Tokenize the inputString using a StringTokenizer
-        //Once the inputString has been tokenized, add every 
+        //Once the inputString has been tokenized, add every
         //token to the fridge as a new magnet.
     }
 

@@ -16,8 +16,8 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
 /**
- * @author <YOUR NAME HERE>
- * @author <YOUR PARTNER'S NAME HERE
+ * @author Bryan Brussee
+ * @author Hyon Kim
  *
  */
 @SuppressWarnings("serial")

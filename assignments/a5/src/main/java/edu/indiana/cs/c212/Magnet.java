@@ -67,8 +67,7 @@ public class Magnet {
      * @return the word displayed on this magnet
      */
     public String getWord() {
-        //FIXME
-    	return null;
+    	return this.word;
     }
 
     /**
@@ -76,8 +75,7 @@ public class Magnet {
      * @return the top left corner of the magnet
      */
     public Point getOrigin() {
-        //FIXME
-    	return null;
+    	return this.origin;
     }
 
     /**
@@ -85,8 +83,7 @@ public class Magnet {
      * @return the text label used for display
      */
     public JLabel getTextLabel() {
-        //FIXME
-    	return null;
+    	return this.textLabel;
     }
 
     /**
@@ -94,8 +91,7 @@ public class Magnet {
      * @return the width of the magnet
      */
     public int getWidth() {
-        //FIXME
-    	return -1;
+    	return this.width;
     }
 
     /**
@@ -103,8 +99,7 @@ public class Magnet {
      * @return the height of the magnet
      */
     public int getHeight() {
-        //FIXME
-    	return -1;
+    	return this.height;
     }
 
     /**
@@ -112,8 +107,7 @@ public class Magnet {
      * @return the rectangle describing the magnet
      */
     public Rectangle getRectangle() {
-        //FIXME
-    	return null;
+    	return this.rectangle;
     }
 
     /**
@@ -121,8 +115,7 @@ public class Magnet {
      * @return the offset of the click from the origin
      */
     public Point getOffset() {
-        //FIXME
-    	return null;
+    	return this.offset;
     }
 
     /**
