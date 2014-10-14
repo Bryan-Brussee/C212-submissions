@@ -1,16 +1,7 @@
 package edu.indiana.cs.c212;
 
-import edu.indiana.cs.c212.Album;
-import edu.indiana.cs.c212.Fridge;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import java.util.StringTokenizer;
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial")
 public class WordPlay extends JFrame {
@@ -47,7 +38,7 @@ public class WordPlay extends JFrame {
     /**
      * This method gets words from the provided input string.
      * It parses the string through a number of pattern matchers to remove whitespace, punctuation,
-     * and digits. Then it removes those characters, and runs the string through a tokenizer to 
+     * and digits. Then it removes those characters, and runs the string through a tokenizer to
      * extract individual words.  Once it has extracted the individual words, it creates new magnets
      * using those words and adds those magnets to the fridge.
      */
@@ -57,6 +48,7 @@ public class WordPlay extends JFrame {
             inputString = "Please give me wordsssss";
         }
 
+<<<<<<< HEAD
         String whitespacePatternMatcher = "\\s";
         String punctuationPatternMatcher = "\\p{Punct}";
         String digitsPatternMatcher = "[0-9]";
@@ -75,6 +67,12 @@ public class WordPlay extends JFrame {
         
         
         //FIXME
+=======
+        for (String string : inputString.split("[^a-zA-Z]")) {
+            System.out.println(string);
+            fridge.addMagnet(new Magnet(string));
+        }
+>>>>>>> 71b0e7528599968ca0b04826a078c39c404630a9
         //Tokenize the inputString using a StringTokenizer
         //Once the inputString has been tokenized, add every
         //token to the fridge as a new magnet.
@@ -82,7 +80,7 @@ public class WordPlay extends JFrame {
 
     public static void main(final String[] args) {
         WordPlay words = new WordPlay();
-        words.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        words.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         words.setSize(Fridge.PREFERRED_SIZE);
         words.setVisible(true);
     }

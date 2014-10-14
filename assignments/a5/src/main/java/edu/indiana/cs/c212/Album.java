@@ -25,12 +25,10 @@ public class Album extends JPanel {
     /**
      * 
      */
-    public static final Color COLOR = Fridge.COLOR;
+    public static final Color COLOR = Color.BLACK;
     public static final Color BORDER_COLOR = Color.WHITE;
     public static final int ALBUM_SIZE = 3; // number of snapshots
-    public static final String SOUND_FILENAME = "sounds/shutter-click.au";
-    
-    private int snapshotPanelSize;
+
     private Fridge fridge;
     private JPanel buttonPanel;
     private JLabel[] snapshotHolders;
@@ -98,6 +96,7 @@ public class Album extends JPanel {
             lastSnapshotIndex = 0;
         }
 
+        @Override
         public void actionPerformed(ActionEvent actionEvent) {
             setupBounds();
             ImageIcon icon = takeSnapshotOfFridge();
@@ -118,8 +117,7 @@ public class Album extends JPanel {
             BufferedImage image = createAnImageAsBigAsTheFridge();
             storePictureOfFridgeIn(image);
             Image smallerCopy = createASmallerCopyToFitInAlbum(image);
-            ImageIcon icon = iconify(smallerCopy);
-            return icon;
+            return iconify(smallerCopy);
         }
 
         private BufferedImage createAnImageAsBigAsTheFridge() {

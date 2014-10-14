@@ -1,7 +1,5 @@
 package edu.indiana.cs.c212;
 
-import edu.indiana.cs.c212.Magnet;
-
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Dimension;
@@ -19,18 +17,17 @@ import java.util.ArrayList;
 /**
  * @author bbrussee
  * @author <YOUR PARTNER'S NAME HERE>
- *
  */
 @SuppressWarnings("serial")
 public class Fridge extends JPanel {
-    public static final Color COLOR = Color.BLACK;
+    public static final Color COLOR = Color.WHITE;
 
     public static final int       DEFAULT_WIDTH_IN_PIXELS  = 400;
     public static final int       DEFAULT_HEIGHT_IN_PIXELS = 400;
-    public static final Dimension PREFERRED_SIZE           = new Dimension(DEFAULT_WIDTH_IN_PIXELS, DEFAULT_HEIGHT_IN_PIXELS);
+    public static final Dimension
+                                  PREFERRED_SIZE           =
+            new Dimension(DEFAULT_WIDTH_IN_PIXELS, DEFAULT_HEIGHT_IN_PIXELS);
 
-    private Dimension size;
-    private Graphics  offscreenTablet;
 
     private List<Magnet> magnets;
     private Magnet       selectedMagnet;
@@ -48,7 +45,7 @@ public class Fridge extends JPanel {
         this.addMouseMotionListener(new MagnetMoveListener());
         this.addComponentListener(new FridgeSizeChangeListener());
 
-        size = PREFERRED_SIZE;
+//        size = PREFERRED_SIZE;
         this.setPreferredSize(PREFERRED_SIZE);
         this.setBackground(COLOR);
         this.repaint();
@@ -57,6 +54,7 @@ public class Fridge extends JPanel {
     /**
      * Adds a new magnet to the ArrayList<Magnet> of magnets
      * Also adds the label for the magnet to the JPanel for display
+     *
      * @param magnet the magnet to add.
      */
     public void addMagnet(Magnet magnet) {
@@ -67,27 +65,36 @@ public class Fridge extends JPanel {
     /**
      * Paints this fridge on the screen and asks all the magnets on this fridge to draw themselves
      * Steps:
-     * 		1. Set the tablet's color to white using the tablet's setColor method.
-     * 		2. Fill the tablet using the tablet's fillRect method.
-     * 		3. For every magnet on the fridge, redraw the magnet using the magnet's draw method.
-     * 
-     * @param tablet
+     * 1. Set the tablet's color to white using the tablet's setColor method.
+     * 2. Fill the tablet using the tablet's fillRect method.
+     * 3. For every magnet on the fridge, redraw the magnet using the magnet's draw method.
+     *
+     * @param tablet Table to paint onto.
      */
     public void paintComponent(Graphics tablet) {
         super.paintComponent(tablet);
+<<<<<<< HEAD
         tablet.setColor(new Color(255, 255, 255));
         tablet.fillRect(0, 0, this.getWidth(), this.getHeight());
         for (int i = 0; i < magnets.size(); i++) {
         	 magnets.get(i).draw(tablet, isSelected(magnets.get(i)));
         }
         //FIXME
+=======
+
+        for (Magnet magnet : magnets) {
+            magnet.draw(isSelected(magnet));
+        }
+>>>>>>> 71b0e7528599968ca0b04826a078c39c404630a9
     }
 
     /**
      * Returns the preferred size of the fridge
+     *
      * @return the preferred size of the fridge
      */
     public Dimension getPreferredSize() {
+<<<<<<< HEAD
     	return Fridge.PREFERRED_SIZE;
     }
 
@@ -108,35 +115,48 @@ public class Fridge extends JPanel {
         //FIXME
     	return Fridge.DEFAULT_HEIGHT_IN_PIXELS;
     }
+=======
+        return super.getPreferredSize();
+    }
+
+
+
+>>>>>>> 71b0e7528599968ca0b04826a078c39c404630a9
 
     /**
      * Resets the size variable to the current bounds of the fridge.
      * Used when the window changes size
      */
     private void setBounds() {
-        Rectangle bounds = this.getBounds();
-        int width = bounds.width;
-        int height = bounds.height;
-        size = new Dimension(width, height);
+//        Rectangle bounds = this.getBounds();
+//        int width = bounds.width;
+//        int height = bounds.height;
+////        size = new Dimension(width, height);
     }
 
     /**
      * Returns true if the user is currently selecting the given magnet and
      * false otherwise
+     *
      * @param magnet the magnet to check
      * @return true if the magnet is selected, false otherwise
      */
     private boolean isSelected(Magnet magnet) {
+<<<<<<< HEAD
     	//FIXME
     	if (magnet.equals(selectedMagnet)) {
     		return true;
     	} else {
         return false;
+=======
+        return magnet == selectedMagnet;
+>>>>>>> 71b0e7528599968ca0b04826a078c39c404630a9
     }
     }
 
     /**
      * Checks to see if any magnet in the fridge's magnet list is selected
+     *
      * @return true if the user has selected a magnet, false otherwise
      */
     private boolean aMagnetIsSelected() {
@@ -159,7 +179,7 @@ public class Fridge extends JPanel {
             if (aMagnetIsSelected()) {
                 shiftSelectedMagnetToTopOfList();
                 selectedMagnet.setOffset(point);
-                selectedMagnet.draw(offscreenTablet, true);
+                selectedMagnet.draw(true);
                 repaint();
             }
         }
@@ -228,14 +248,14 @@ public class Fridge extends JPanel {
 
         private void moveSelectedMagnetTo(Point point) {
             selectedMagnet.moveTo(point);
-            selectedMagnet.draw(offscreenTablet, true);
+            selectedMagnet.draw(true);
             repaint();
         }
 
         private void redrawAnyIntersectingMagnets() {
             for (Magnet magnet : magnets) {
                 if (magnet.intersects(selectedMagnet)) {
-                    magnet.draw(offscreenTablet, isSelected(magnet));
+                    magnet.draw(isSelected(magnet));
                     repaint();
                 }
             }
