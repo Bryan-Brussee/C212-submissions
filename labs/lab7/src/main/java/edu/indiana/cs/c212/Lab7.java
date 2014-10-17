@@ -34,23 +34,32 @@ public class Lab7 extends JPanel implements ActionListener{
 		  then set its background to the appropriate color (should have no red)
 		  and enable it
 		*/
+		JButton colorSwapRed = new JButton("Green/Blue Gradient");
+		colorSwapRed.setBackground(new Color(0, 255, 255));
+		colorSwapRed.setEnabled(true);
 
 		
 		//FIXME
 		/*create a JButton called colorSwapGreen with text "Random"
 		  and enable it
 		*/
+		JButton colorSwapGreen = new JButton("Random");
+		colorSwapGreen.setBackground(new Color (255, 0, 255));
+		colorSwapGreen.setEnabled(true);
 		
 		colorSwapBlue.addActionListener(this);
 		
 		//FIXME
-		/*uncomment the two lines below once you've created the JButtons above
+		//uncomment the two lines below once you've created the JButtons above
 		  colorSwapRed.addActionListener(this);
 		  colorSwapGreen.addActionListener(this);
-		*/
 		
 		//FIXME
 		//Add the three buttons to the panel in the order they were created, then return the panel
+		
+		panel.add(colorSwapBlue);
+		panel.add(colorSwapRed);
+		panel.add(colorSwapGreen);
 		return panel;			
 	}
 	
@@ -93,6 +102,10 @@ public class Lab7 extends JPanel implements ActionListener{
 		     on g (with those same parameters you used in fillRect).
 		*/			
 		//FIXME
+		g.setColor(color);
+		g.fillRect(i * BOX_SIZE, j * BOX_SIZE, BOX_SIZE, BOX_SIZE);
+		g.setColor(Color.BLACK);
+		g.drawRect(i * BOX_SIZE, j * BOX_SIZE, BOX_SIZE, BOX_SIZE);
 	}
 	
 	/**

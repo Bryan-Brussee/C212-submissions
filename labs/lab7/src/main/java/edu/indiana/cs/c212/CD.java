@@ -22,32 +22,44 @@ public class CD extends Media{
 	 * @param genre, the genre of the CD
 	 */
 	public CD(String title, String artist, int copyrightYear, ArrayList<MP3> tracks, String publisher, String genre){
-		//FIXME
+		this.title = title;
+		this.artist = artist;
+		this.copyrightYear = copyrightYear;
+		this.trackList = tracks;
+		this.publisher = publisher;
+		this.genre = genre;
+		this.numberOfTracks = tracks.size();
+		
+		this.lengthInSeconds = 0;
+		for (MP3 track: tracks) {
+			this.lengthInSeconds += track.lengthInSeconds;
+		}
 	}
+		
 	
 	/* (non-Javadoc)
 	 * @see edu.indiana.cs.c212.MediaItem#makeCopy()
 	 */
 	@Override
 	public CD makeCopy() {
-		//FIXME
-		return null;
-	}
+		CD newCD = new CD (getTitle(), getArtist(), getCopyrightYear(), getTracks(), getPublisher(), getGenre());
+		return newCD;
+		}
 	
 	/**
 	 * @return the publisher of this CD
 	 */
 	public String getPublisher(){
-		//FIXME
-		return null;
+		return this.publisher;
 	}
 	
 	/**
 	 * @return the genre of this CD
 	 */
+	
+	
 	public String getGenre(){
-		//FIXME
-		return null;
+		return this.genre;
 	}
 	
 	/**
@@ -56,31 +68,28 @@ public class CD extends Media{
 	 * @param genre, the genre this CD will be
 	 */
 	public void setGenre(String genre){
-		//FIXME
+		this.genre = genre;
 	}
 	
 	/**
 	 * @return the number of tracks on this CD
 	 */
 	public Integer getNumberOfTracks(){
-		//FIXME
-		return null;
+			return this.numberOfTracks;
 	}
 	
 	/**
 	 * @return the recording artist for this CD
 	 */
 	public String getArtist(){
-		//FIXME
-		return null;
+		return this.artist;
 	}
 	
 	/**
 	 * @return and ArrayList<MP3> of all the tracks on this CD
 	 */
 	public ArrayList<MP3> getTracks(){
-		//FIXME
-		return null;
+		return this.trackList;
 	}
 	
 	/* (non-Javadoc)

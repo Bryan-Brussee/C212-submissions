@@ -10,7 +10,7 @@ public class MediaCollection {
 
     MediaCollection(String name) {
         this.name = name;
-        this.collection = new ArrayList<>();
+        this.collection = new ArrayList<MediaItem>();
     }
 
     /**
@@ -22,7 +22,14 @@ public class MediaCollection {
      */
     public MediaCollection copyCollection() {
         //FIXME
-        return null;
+    	ArrayList<MediaItem> newList = new ArrayList<MediaItem>();
+    	for (MediaItem item: collection) {
+    		newList.add(item.makeCopy());
+    	}
+        MediaCollection m = new MediaCollection(this.name);
+        m.collection = newList;
+        
+        return m;
     }
 
     /**
