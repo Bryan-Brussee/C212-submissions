@@ -2,6 +2,9 @@ package edu.indiana.cs.c212.paint.gui.panel;
 
 import edu.indiana.cs.c212.paint.gui.Controls;
 import edu.indiana.cs.c212.paint.gui.drawable.DrawableShape;
+import edu.indiana.cs.c212.paint.gui.drawable.impl.DrawableCircle;
+import edu.indiana.cs.c212.paint.gui.drawable.impl.DrawableEllipse;
+import edu.indiana.cs.c212.paint.gui.drawable.impl.DrawableLine;
 import edu.indiana.cs.c212.paint.gui.drawable.impl.DrawableRectangle;
 import edu.indiana.cs.c212.paint.gui.drawable.impl.DrawableSquare;
 
@@ -9,6 +12,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,7 +58,7 @@ public class ShapePanel extends JPanel {
 
         switch (shapeType) {
             case LINE: {
-                // shape = new DrawableLine(from, to); //FIXME
+                shape = new DrawableLine(from, to); //FIXME
                 break;
             }
             case RECTANGLE: {
@@ -66,11 +70,11 @@ public class ShapePanel extends JPanel {
                 break;
             }
             case ELLIPSE: {
-                // shape = new DrawableEllipse(from, to);  //FIXME
+                shape = new DrawableEllipse(from, to);  //FIXME
                 break;
             }
             case CIRCLE: {
-                //shape = new DrawableCircle(from, to);  //FIXME
+                shape = new DrawableCircle(from, to);  //FIXME
                 break;
             }
         }
