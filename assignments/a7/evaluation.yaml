@@ -1,10 +1,12 @@
 # See the wiki for how to fill this out.
 # https://github.iu.edu/C212-FALL2014/AssignmentFrameworks/wiki/Assignment-Workflow#peer-evaluations
-username : #YOUR USERNAME SHOULD GO IN FRONT OF THIS COMMENT
+bbrussee : #YOUR USERNAME SHOULD GO IN FRONT OF THIS COMMENT
+
+
+Bryan Brussee
 
 #Please do not include the angle braces, they are there to indicate that your data goes there
 #and should be removed when inputing the username data.
 #MAKE SURE TO UNCOMMENT THE LINES BELOW BY REMOVING THE #'s
-#<YOUR USERNAME> : <YOUR SHARE>
-#<PARTNER 1 USERNAME> : <PARTNER 1's SHARE>
-#<PARTNER 2 USERNAME> : <PARTNER 2's SHARE>
+#bbrussee: 50%
+#mhigham/Matt Higham: 50%
