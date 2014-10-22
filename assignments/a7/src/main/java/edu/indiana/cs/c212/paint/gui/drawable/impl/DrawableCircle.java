@@ -58,8 +58,7 @@ public class DrawableCircle extends DrawableShape {
 	}
 	
     public String toString() {
-        return super.toString() + "width = " + radius + "\n" + "height = "
-                + radius + "\n" + "radius= " + radius + "\n" + "diamater= " + diameter
+        return super.toString() +  "radius= " + radius + "\n" + "diamater= " + diameter
                 + "\n" + "center= " + center;
     }
 
