@@ -23,6 +23,11 @@ public class SimpleGameBoard extends AbstractGameBoard implements Board {
 		this.north = new Tile(PlayerColor.RED, new Point(0,-1));
 
 		this.board =  new Tile[this.size][this.size];
+		for (int x= 0; x < this.size; x++) {
+			for (int y = 0; y < this.size; y++) {
+				board[x][y] = new Tile(PlayerColor.BLANK, new Point(x,y));
+			}
+		}
 
 	}
 
@@ -36,6 +41,11 @@ public class SimpleGameBoard extends AbstractGameBoard implements Board {
 		this.south = new Tile(PlayerColor.RED, new Point(0,size));
 		this.north = new Tile(PlayerColor.RED, new Point(0,-1));
 		this.board = new Tile[this.size][this.size];
+		for (int x= 0; x < this.size; x++) {
+			for (int y = 0; y < this.size; y++) {
+				board[x][y] = new Tile(PlayerColor.BLANK, new Point(x,y));
+			}
+		}
 	}
 
 
@@ -58,10 +68,7 @@ public class SimpleGameBoard extends AbstractGameBoard implements Board {
 		if (y == this.size ){
 			return this.south;
 		}
-		if (this.board[x][y] == null){
-			this.board[x][y] = new Tile(PlayerColor.BLANK, new Point(x, y));
-			return board[x][y];
-		}
+		else
 		return this.board[x][y];
 	}
 
@@ -114,5 +121,7 @@ public class SimpleGameBoard extends AbstractGameBoard implements Board {
 			this.board[mX][mY].setColor(player);
 		}
 	}
+	
+	
 
 }

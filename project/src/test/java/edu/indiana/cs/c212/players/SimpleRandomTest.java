@@ -18,6 +18,7 @@ public class SimpleRandomTest {
     StandardRules rules;
     SimpleGameBoard board;
     SimpleRandom random2;
+    
     @Before
     public void setup(){
         random = new SimpleRandom(PlayerColor.RED);

@@ -18,7 +18,7 @@ public class StandardRules implements Rules {
 	protected final Board board;
 	private Queue<Player> players;
 
-	StandardRules(Board board, Player red, Player blue) {
+	public StandardRules(Board board, Player red, Player blue) {
 		this.board = board;
 		players = new LinkedList<Player>();
 		players.add(red);
@@ -119,7 +119,7 @@ public class StandardRules implements Rules {
 	public ArrayList<Move> getLegalMoves(Player player) {
 		ArrayList<Move> legalMoves = new ArrayList<Move>();
 		for (int x = 0; x < this.board.getSize(); x++) {
-			for (int y = 0; x < this.board.getSize(); y++) {
+			for (int y = 0; y < this.board.getSize(); y++){
 				if (this.board.getTileAt(x, y).getColor() == PlayerColor.BLANK) {
 					legalMoves.add(new Move(x, y));
 				}
