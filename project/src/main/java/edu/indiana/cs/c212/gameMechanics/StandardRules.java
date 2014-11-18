@@ -81,8 +81,10 @@ public class StandardRules implements Rules {
 		} else {
 			return false;
 		}
-	}
 
+	}
+		
+		
 	@Override
 	public Player nextTurn() {
 		Player a = players.peek();
@@ -103,10 +105,10 @@ public class StandardRules implements Rules {
 		if (m.getX() <= -1 || m.getY() <= -1
 				|| m.getX() >= this.board.getSize()
 				|| m.getY() >= this.board.getSize()) {
-			throw new InvalidMoveException("OUTSIDE_BOARD", m, -1);
+			throw new InvalidMoveException("OUTSIDE_BOARD", m, 0);
 		}
 		if (!isLegalMove(m)) {
-			throw new InvalidMoveException("ALREADY_TAKEN", m, -1);
+			throw new InvalidMoveException("ALREADY_TAKEN", m, 1);
 		}
 		if (getPlayers().peek().getColor() == PlayerColor.RED) {
 			this.board.makeMove(m, PlayerColor.RED);

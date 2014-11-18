@@ -17,13 +17,13 @@ public class OverwriteRules extends StandardRules {
 		ArrayList<Move> legalMoves = new ArrayList<Move>();
 		for (int x = 0; x < this.board.getSize(); x++) {
 			for (int y = 0; y < this.board.getSize(); y++) {
+
 				if (this.board.getTileAt(x, y).getColor() == PlayerColor.BLANK) {
 					legalMoves.add(new Move(x, y));
 				}
 				if (this.board.getTileAt(x, y).getColor() != player.getColor()) {
-					legalMoves.add(new Move(x, y));
+					legalMoves.add(new OverwriteMove(x, y));
 				}
-				
 			}
 		}
 		return legalMoves;
@@ -32,6 +32,28 @@ public class OverwriteRules extends StandardRules {
 
 	@Override
 	public boolean isLegalMove(Move m) {
-		return true;
+
+		if (m.getX() >= 0 && m.getX() < this.board.getSize() && m.getY() >= 0
+				&& m.getY() < this.board.getSize()) {
+
+			if (m.getClass().equals(Move.class)) {
+				return super.isLegalMove(m);
+			}
+
+			else if (this.board.getTileAt(m.getX(), m.getY()).getColor() == PlayerColor.BLANK) {
+				return false;
+			}
+
+			else if (this.board.getTileAt(m.getX(), m.getY()).getColor() == getPlayers()
+					.peek().getColor()) {
+				return false;
+			}
+
+			else
+				return true;
+		}
+
+		return false;
 	}
+
 }

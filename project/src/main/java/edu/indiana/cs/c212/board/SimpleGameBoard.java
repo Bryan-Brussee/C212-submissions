@@ -113,14 +113,14 @@ public class SimpleGameBoard extends AbstractGameBoard implements Board {
 	}
 
 	@Override
-	public void makeMove(Move m, PlayerColor player) {
-		// TODO Auto-generated method stub
-		int mX = m.getX();
-		int mY = m.getY();
-		if (getTileAt(mX, mY).getColor().equals(PlayerColor.BLANK)){
-			this.board[mX][mY].setColor(player);
-		}
-	}
+public void makeMove(Move m, PlayerColor player) {
+        
+        int mX = m.getX();
+        int mY = m.getY();
+        this.board[mX][mY].setColor(player);
+        
+    }
+
 	
 	
 
