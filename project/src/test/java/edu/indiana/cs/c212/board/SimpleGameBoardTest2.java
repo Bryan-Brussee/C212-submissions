@@ -1,4 +1,4 @@
-package edu.indiana.cs.c212.board;
+/*package edu.indiana.cs.c212.board;
 
 import edu.indiana.cs.c212.gameMechanics.Move;
 import edu.indiana.cs.c212.gameMechanics.PlayerColor;
@@ -85,4 +85,4 @@ public class SimpleGameBoardTest2 {
         board.makeMove(new Move(2, 7), PlayerColor.RED);
     }
 
-}
+}*/

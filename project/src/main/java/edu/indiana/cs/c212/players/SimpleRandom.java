@@ -8,9 +8,10 @@ import edu.indiana.cs.c212.gameMechanics.Move;
 import edu.indiana.cs.c212.gameMechanics.PlayerColor;
 
 public class SimpleRandom extends AbstractPlayer {
+	protected PlayerColor color;
 	
-	public SimpleRandom(PlayerColor player) {
-		super(player);
+	public SimpleRandom(PlayerColor color) {
+		super(color);
 	}
 
 	@Override
@@ -27,5 +28,6 @@ public class SimpleRandom extends AbstractPlayer {
 	public String getName() {
 		return "Simple Random";
 	}
+	
 
 }

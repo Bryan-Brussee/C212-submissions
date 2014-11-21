@@ -14,7 +14,6 @@ import edu.indiana.cs.c212.players.SimpleRandom;
 import edu.indiana.cs.c212.view.textual.CommandLineView;
 
 public class GameRunner extends Observable implements Runnable {
-	private int boardSize;
 	private Player redPlayer;
 	private Player bluePlayer;
 	private Rules rules;
@@ -22,7 +21,6 @@ public class GameRunner extends Observable implements Runnable {
 	private Board board;
 
 	public GameRunner(int boardSize, String red, String blue, String ruleSet) {
-		this.boardSize = boardSize;
 		this.board = new SimpleGameBoard(boardSize);
 		this.redPlayer = createPlayer(red, PlayerColor.RED);
 		this.bluePlayer = createPlayer(blue, PlayerColor.BLUE);
@@ -30,27 +28,38 @@ public class GameRunner extends Observable implements Runnable {
 		this.rules = createRules(ruleSet, this.board, redPlayer, bluePlayer);
 		this.running = true;
 	}
+	
+	
+	public Player getCurrentPlayer() {
+		System.out.println("Rules: " + this.rules);
+		System.out.println("Get Players: " + rules.getPlayers());
+		return rules.getPlayers().peek();
+	}
 
 	protected static Player createPlayer(String playerType, PlayerColor color) {
 		switch (playerType) {
-
-		case "Simple Random Player":
-			SimpleRandom simpleRandomPlayer = new SimpleRandom(color);
-			return simpleRandomPlayer;
 		case "Command Line Player":
 			CommandLinePlayer humanPlayer = new CommandLinePlayer(color);
 			return humanPlayer;
+		case "Simple Random Player":
+			SimpleRandom simpleRandomPlayer = new SimpleRandom(color);
+			return simpleRandomPlayer;
 		}
-
 		return null;
 	}
 
+	public static List<String> getPlayersList() {
+		ArrayList<String> playersList = new ArrayList<String>();
+		playersList.add("Command Line Player");
+		playersList.add("Simple Random Player");
+		return playersList;
+
+	}
+	
 	protected static Rules createRules(String ruleSet, Board board, Player red,
 			Player blue) {
-		// System.out.println("ruleSet" + ruleSet);
-
+		System.out.println("Rule set: " + ruleSet + " " + ruleSet.getClass());
 		ruleSet = getRuleSets().get(new Integer(ruleSet));
-
 		switch (ruleSet) {
 		case "Standard Rules":
 			StandardRules standardRules = new StandardRules(board, red, blue);
@@ -63,40 +72,22 @@ public class GameRunner extends Observable implements Runnable {
 					board, red, blue);
 			return loseByConnectingRules;
 		}
-		// System.out.println("Is null");
-		return null;
+		StandardRules standardRules = new StandardRules(board, red, blue);
+		return standardRules;
+		//return null;
+	}
+	
+	public static List<String> getRuleSets() {
+		ArrayList<String> ruleChoices = new ArrayList<String>();
+		ruleChoices.add("Standard Rules");
+		ruleChoices.add("Overwrite Rules");
+		ruleChoices.add("Lose by Connecting Rules");
+		return ruleChoices;
 	}
 
 	public Board getBoard() {
 
 		return this.board;
-	}
-
-	public Player getCurrentPlayer() {
-		System.out.println("Rules: " + this.rules);
-		System.out.println("Get Players: " + rules.getPlayers());
-
-		return rules.getPlayers().peek();
-	}
-
-	public static List<String> getPlayersList() {
-		ArrayList<String> playersList = new ArrayList<String>();
-		playersList.add("Command Line Player");
-		playersList.add("Simple Random");
-		return playersList;
-
-	}
-
-	public static List<String> getRuleSets() {
-		// TODO Auto-generated method stub
-
-		List<String> ruleChoices = new ArrayList<String>();
-
-		ruleChoices.add("Standard Rules");
-		ruleChoices.add("Overwrite Rules");
-		ruleChoices.add("Lose by Connecting Rules");
-
-		return ruleChoices;
 	}
 
 	public static void main(String[] args) {
