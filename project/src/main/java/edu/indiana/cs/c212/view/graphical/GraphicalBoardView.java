@@ -2,39 +2,13 @@ package edu.indiana.cs.c212.view.graphical;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.MenuContainer;
-import java.io.Serializable;
-import java.util.EventListener;
-import java.util.Scanner;
-
-import javax.accessibility.Accessible;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.RootPaneContainer;
-import javax.swing.WindowConstants;
-
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.util.Calendar;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerListModel;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import edu.indiana.cs.c212.gameMechanics.GameRunner;
-import edu.indiana.cs.c212.view.textual.CommandLineView;
 
 public class GraphicalBoardView extends javax.swing.JFrame implements
 		java.awt.event.ActionListener {
