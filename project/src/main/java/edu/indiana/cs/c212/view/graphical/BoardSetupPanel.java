@@ -11,7 +11,7 @@ import javax.swing.event.ChangeListener;
 public class BoardSetupPanel extends javax.swing.JPanel {
 
 	private JSpinner boardSizeSpinner;
-	private JPanel spinnerJPanel;
+	//private JPanel spinnerJPanel;
 	private int spinnerValue;
 
 	public static final int DEFAULT_BOARD_SIZE = 7;
@@ -32,15 +32,9 @@ public class BoardSetupPanel extends javax.swing.JPanel {
 		});
 
 		JLabel spinnerName = new JLabel("Board Size");
-		JPanel boardSizeChoice = new JPanel();
-		boardSizeChoice.add(spinnerName);
-		boardSizeChoice.add(spinner);
-		this.spinnerJPanel = boardSizeChoice;
+		this.add(spinnerName);
+		this.add(spinner);
 
-	}
-
-	public JPanel getSpinnerJPanel() {
-		return spinnerJPanel;
 	}
 
 	public JSpinner getSpinner() {

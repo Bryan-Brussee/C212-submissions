@@ -5,14 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import edu.indiana.cs.c212.gameMechanics.GameRunner;
 
 public class PlayerChoicePanel extends javax.swing.JPanel {
 
-	// private JComboBox<String> playerList;
-	private JPanel playerChoiceJPanel;
+	//private JComboBox<String> playerList;
+	//private JPanel playerChoiceJPanel;
 	private String player;
 
 	public PlayerChoicePanel(String name) {
@@ -36,15 +34,12 @@ public class PlayerChoicePanel extends javax.swing.JPanel {
 		);
 
 		JLabel playerName = new JLabel(name + " Player Type: ");
+		
+		
+		//JPanel playerChoice = new JPanel();
+		this.add(playerName);
+		this.add(playerList);
 
-		JPanel playerChoice = new JPanel();
-		playerChoice.add(playerName);
-		playerChoice.add(playerList);
-		this.playerChoiceJPanel = playerChoice;
-	}
-
-	public JPanel getPlayerChoiceJPanel() {
-		return playerChoiceJPanel;
 	}
 
 	public String getPlayerChoiceString() {
