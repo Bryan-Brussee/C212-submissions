@@ -4,25 +4,63 @@ import java.util.List;
 
 import edu.indiana.cs.c212.board.Board;
 import edu.indiana.cs.c212.gameMechanics.Move;
+import edu.indiana.cs.c212.gameMechanics.OverwriteMove;
 import edu.indiana.cs.c212.gameMechanics.PlayerColor;
+import edu.indiana.cs.c212.view.textual.CommandLineView;
 
 public class BasicTrailsPlayer extends AbstractPlayer {
+        
+        public BasicTrailsPlayer(PlayerColor player){
+                super(player);
+        }
 
-	public BasicTrailsPlayer(PlayerColor c) {
-		super(c);
-		// TODO Auto-generated constructor stub
-	}
+        @Override
+        public Move getMove(Board board, List<Move> legalMoves) {
+                
+                System.out.print(CommandLineView.boardToString(board));
+                
+                int size = board.getSize();
+                
+                if (this.getColor().equals(PlayerColor.BLUE)) {
 
-	@Override
-	public Move getMove(Board board, List<Move> legalMoves) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+                        for (int moveY = 0; moveY < size; moveY++) {
+                                for (int moveX = 0; moveX < size; moveX++) {
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+                                        Move s = new Move(moveX, moveY);
+                                        OverwriteMove k = new OverwriteMove(moveX, moveY);
+
+                                        if (legalMoves.contains(s)) {
+                                                return s;
+                                        } else if (legalMoves.contains(k)) {
+                                                return k;
+                                        }
+                                }
+                        }
+
+                }
+
+                for (int moveX = 0; moveX < size; moveX++) {
+                        for (int moveY = 0; moveY < size; moveY++) {
+
+                                Move s = new Move(moveX, moveY);
+                                OverwriteMove k = new OverwriteMove(moveX, moveY);
+
+                                if (legalMoves.contains(s)) {
+                                        return s;
+                                } else if (legalMoves.contains(k)) {
+                                        return k;
+                                }
+                        }
+                }
+
+                return null;
+
+        }
+
+        @Override
+        public String getName() {
+                
+                return "Basic Trails Player";
+        }
 
 }

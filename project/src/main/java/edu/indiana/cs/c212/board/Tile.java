@@ -9,13 +9,13 @@ public class Tile {
 	private PlayerColor color;
 	
 	
-	Tile (PlayerColor color, Point p) {
+	public Tile (PlayerColor color, Point p) {
 		super();
 		this.color = color;
 		this.point = p;
 	}
 	
-	Tile(Tile tile) {
+	public Tile(Tile tile) {
 		super();
 		
 		this.color = tile.getColor();
