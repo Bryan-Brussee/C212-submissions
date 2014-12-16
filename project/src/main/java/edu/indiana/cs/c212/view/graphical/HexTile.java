@@ -1,53 +1,65 @@
 package edu.indiana.cs.c212.view.graphical;
 
+/**@author jzapatav
+ * @author bbrussee
+ *
+ **/
+
 import java.awt.Color;
+import java.awt.ItemSelectable;
+import java.awt.MenuContainer;
 import java.awt.Polygon;
-
+import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
+import java.io.Serializable;
+import javax.accessibility.Accessible;
 import javax.swing.JButton;
-
+import javax.swing.SwingConstants;
 import edu.indiana.cs.c212.board.Tile;
 import edu.indiana.cs.c212.gameMechanics.PlayerColor;
 
-public class HexTile extends JButton {
+public class HexTile extends JButton implements ImageObserver, MenuContainer,
+		Serializable, Accessible, SwingConstants, ItemSelectable {
 	private int x;
 	private int y;
 	private int radius;
 	private Tile tile;
-	private Polygon hex;
+	public Polygon hex;
+	protected int b;
+	protected int a;
 
 	public HexTile(int x, int y, int radius, Tile tile) {
 		this.x = x;
 		this.y = y;
-		this.radius = 100;
+		this.radius = radius;
 		this.tile = tile;
-
-		int[] xArray = new int[6];
-		int[] yArray = new int[6];
-
-		for (int i = 0; i < xArray.length; i++) {
-			for (double a = Math.PI/6; a < 2* Math.PI; a += Math.PI/3) {
-				xArray[i] = radius + (int) (this.radius * Math.cos(a));
-				yArray[i] = radius + (int) (this.radius * Math.sin(a));
-
-			}
-		}
-
-		hex = new Polygon(xArray, yArray, 6);
-
+		Polygon hexagon = new Polygon();
+		int b = (int) (this.radius * Math.cos(Math.PI / 6));
+		int a = (int) (this.radius / 2);
+		this.b = b;
+		this.a = a;
+		int xOrigin = (this.x * (2 * b)) + this.radius;
+		int yOrigin = (this.y * (2 * this.radius)) + this.radius;
+		hexagon.addPoint(xOrigin + b, yOrigin + a);
+		hexagon.addPoint(xOrigin, yOrigin + this.radius);
+		hexagon.addPoint(xOrigin - b, yOrigin + a);
+		hexagon.addPoint(xOrigin - b, yOrigin - a);
+		hexagon.addPoint(xOrigin, yOrigin - this.radius);
+		hexagon.addPoint(xOrigin + b, yOrigin - a);
+		this.hex = hexagon;
 	}
 
 	public final int getBoardX() {
-		return this.x;
+		return (int) tile.getPoint().getX();
 	}
 
 	public final int getBoardY() {
-		return this.y;
+		return (int) tile.getPoint().getY();
 	}
 
 	public void paint(java.awt.Graphics g) {
-		System.out.println("Tile painted!");
+		// System.out.println("Tile painted!");
 		PlayerColor hexcolor = tile.getColor();
-
 		if (hexcolor == PlayerColor.RED) {
 			g.setColor(Color.RED);
 		} else if (hexcolor == PlayerColor.BLUE) {
@@ -57,29 +69,28 @@ public class HexTile extends JButton {
 		}
 		g.fillPolygon(hex);
 		g.drawPolygon(hex);
+		g.setColor(Color.GRAY);
+		g.drawPolygon(hex);
 	}
 
 	@Override
 	public boolean contains(java.awt.Point p) {
-
 		return hex.contains(p);
-
 	}
 
 	@Override
 	public boolean contains(int x, int y) {
-
 		return hex.contains(x, y);
-
 	}
 
 	protected void processMouseEvent(java.awt.event.MouseEvent e) {
-
+		if (e.getID() == MouseEvent.MOUSE_CLICKED
+				&& hex.contains(e.getX(), e.getY())) {
+			super.processMouseEvent(e);
+		}
 	}
 
 	public void setRadius(int radius) {
 		this.radius = radius;
-
 	}
-
 }
