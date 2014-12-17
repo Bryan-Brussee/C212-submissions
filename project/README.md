@@ -4,3 +4,7 @@ Trails is a 2 player game played on a board of hexagonal tiles. It can be seen a
 
 ##What is the Project?
 You will be given a files that contain only the public methods annotated by javadocs. Do not alter any of the method signatures of private methods, but feel free to add your own private helpers.
+
+
+I, Bryan Brussee, did not complete any significant portion of milestone5.
+Juan did though.

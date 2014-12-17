@@ -13,11 +13,10 @@ import edu.indiana.cs.c212.gameMechanics.PlayerColor;
 public class PointAndClickPlayer extends AbstractPlayer implements
 		AWTEventListener {
 	
-	private Point point;
+	private Point p;
 
 	public PointAndClickPlayer(PlayerColor c) {
 		super(c);
-		// TODO Auto-generated constructor stub
 	}
 
     @Override
@@ -28,12 +27,12 @@ public class PointAndClickPlayer extends AbstractPlayer implements
         
         while(true){
             try {
-                Thread.sleep(20);
+                Thread.sleep(30);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if(this.point != null){
-                move = new Move(this.point.x, this.point.y);
+            if(this.p != null){
+                move = new Move(this.p.x, this.p.y);
                 if(legalMoves.contains(move));
                 break;
             }
@@ -45,14 +44,12 @@ public class PointAndClickPlayer extends AbstractPlayer implements
 
 	@Override
 	public void eventDispatched(AWTEvent event) {
-		// TODO Auto-generated method stub
-		point = (Point) event.getSource();
+		p = (Point) event.getSource();
 
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Point and Click Player";
 	}
 
