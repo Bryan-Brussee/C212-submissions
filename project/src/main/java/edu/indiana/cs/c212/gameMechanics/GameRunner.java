@@ -15,6 +15,7 @@ import edu.indiana.cs.c212.board.SimpleGameBoard;
 import edu.indiana.cs.c212.exceptions.InvalidMoveException;
 import edu.indiana.cs.c212.players.BasicTrailsPlayer;
 import edu.indiana.cs.c212.players.CommandLinePlayer;
+import edu.indiana.cs.c212.players.MiddleProximityPlayer;
 import edu.indiana.cs.c212.players.Player;
 import edu.indiana.cs.c212.players.PointAndClickPlayer;
 import edu.indiana.cs.c212.players.SimpleRandom;
@@ -61,6 +62,10 @@ public class GameRunner extends Observable implements Runnable {
 		case "Basic Trails Player":
 			BasicTrailsPlayer basic = new BasicTrailsPlayer(color);
 			return basic;
+			
+		case "Middle Proximity Player":
+			MiddleProximityPlayer prox = new MiddleProximityPlayer(color);
+			return prox;
 
 		}
 		return null;
@@ -73,6 +78,7 @@ public class GameRunner extends Observable implements Runnable {
 		playersList.add("Simple Random Player");
 		playersList.add("Point and Click Player");
 		playersList.add("Basic Trails Player");
+		playersList.add("Middle Proximity Player");
 
 		return playersList;
 	}

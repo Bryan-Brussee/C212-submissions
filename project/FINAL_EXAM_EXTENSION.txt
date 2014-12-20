@@ -1,11 +1,16 @@
 Extension Selected?
-
+Very brief attempt made on the first one (it might work), more extensive attempt on Extension 2.
 What you were able to accomplish towards completing this extension?
-
+I think I might have completed the first one, though it seemed too easy so I know I overlooked something big.  The second one I struggled with, and though I could conceptualize the problem, implementation proved diffocult.
 What problems did you encounter?
-
+I was a little foggy on scope for Extension 2.  
 How did you overcome those problems?
-
+I'm not sure I did.
 What problems were you unable to solve?
+Currently the code is not functioning as I intended.  However, I've still got some time left to 
+How would you try to solve these problems if you had more time? (Be as specific as possible!) 
 
-How would you try to solve these problems if you had more time? (Be as specific as possible!)
+I would read up on scope, particularly if in a loop I can modify variables defined in that method but prior to beginning said loop.  
+My goal with determing distance to the center of the board revolved around first calculating the middle point.  I then iterated through the list of 
+legal moves.  if the exact center of the board was not yet taken, that was the move to make.  Othewise, I wanted to iterate through every legal move and
+compare the absolute sum of each x distance and y distance.  the smallest distance would then correspond to the move to make.  Things got dicey though.
